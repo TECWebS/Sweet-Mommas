@@ -31,7 +31,6 @@
     background: var(--white);
     color: var(--text-dark);
     line-height: 1.6;
-    overflow-x: hidden;
   }
 
   /* ── NAV ── */
@@ -414,20 +413,43 @@
   }
 
   /* ── GALLERY ── */
-  .gallery-section { background: var(--off-white); padding: 5rem 0; }
+  .gallery-section { background: var(--off-white); padding: 5rem 0; overflow: hidden; }
   .gallery-section .inner { padding: 0 5rem 2rem; }
+  .gallery-wrap { position: relative; }
   .gallery-strip {
     display: flex; gap: 1rem;
-    overflow-x: auto; padding: 0 5rem;
-    scrollbar-width: none;
+    overflow-x: auto; padding: 0 5rem 1rem;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pink-light) transparent;
+    cursor: grab;
   }
-  .gallery-strip::-webkit-scrollbar { display: none; }
+  .gallery-strip:active { cursor: grabbing; }
+  .gallery-strip::-webkit-scrollbar { height: 4px; }
+  .gallery-strip::-webkit-scrollbar-track { background: transparent; }
+  .gallery-strip::-webkit-scrollbar-thumb { background: var(--pink-light); border-radius: 4px; }
   .gallery-item {
     flex: 0 0 240px; height: 300px;
     object-fit: cover; border-radius: 6px;
-    display: block;
+    display: block; user-select: none;
+    transition: transform 0.2s;
   }
+  .gallery-item:hover { transform: scale(1.02); }
   .gallery-item:first-child { flex: 0 0 340px; }
+  .gallery-arrows {
+    display: flex; gap: 0.5rem;
+    position: absolute; top: 50%; right: 5rem;
+    transform: translateY(-50%);
+  }
+  .gallery-arrow {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: white; border: 1.5px solid var(--border);
+    color: var(--red); font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .gallery-arrow:hover { background: var(--blush); border-color: var(--pink); }
 
   /* ── FOOTER ── */
   footer {
@@ -528,7 +550,7 @@
     .nav-links { display: none; }
     .nav-hamburger { display: block; }
     .gallery-section .inner { padding: 0 2.5rem 1.5rem; }
-    .gallery-strip { padding: 0 2.5rem; }
+    .gallery-strip { padding: 0 2.5rem 1rem; }
     nav { padding: 0 2rem; }
     footer { padding: 3rem 2rem 2rem; }
     .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -848,9 +870,9 @@
 <!-- CATERING HIGHLIGHT -->
 <section class="catering-section" id="catering">
   <div class="catering-img">
-    <img src="Grilled Ham and Cheese.png"
-    <img src="Comfort Food.png"
-     <img src="Golden Cake.png"
+    <img src="Grilled Ham and Cheese.png" alt="Grilled ham and cheese sandwich">
+    <img src="Comfort Food.png" alt="Southern comfort food spread">
+    <img src="Golden Cake.png" alt="Golden celebration cake">
   </div>
   <div>
     <div class="section-label">Events &amp; Catering</div>
@@ -893,18 +915,32 @@
 
 <!-- GALLERY -->
 <section class="gallery-section">
-  <div class="inner">
-    <div class="section-label">Fresh From the Kitchen</div>
-    <h2 class="section-title">Made with Care, Every Day</h2>
+  <div class="inner" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div class="section-label">Fresh From the Kitchen</div>
+      <h2 class="section-title">Made with Care, Every Day</h2>
+    </div>
+    <div style="display:flex;gap:0.5rem;">
+      <button class="gallery-arrow" onclick="scrollGallery(-1)" aria-label="Scroll left">&#8592;</button>
+      <button class="gallery-arrow" onclick="scrollGallery(1)"  aria-label="Scroll right">&#8594;</button>
+    </div>
   </div>
-  <div class="gallery-strip">
-    <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1550.jpg" alt="Baked goods" loading="lazy">
-    <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1546.jpg" alt="Fresh pastries" loading="lazy">
-    <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1157.jpg" alt="Soul food" loading="lazy">
-    <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1548.jpg" alt="Desserts" loading="lazy">
-    <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1521.jpg" alt="Cakes" loading="lazy">
-    <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2025/01/IMG_0977-scaled.jpeg" alt="Fresh baked" loading="lazy">
-    <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1534.jpg" alt="Cookies and pastries" loading="lazy">
+  <div class="gallery-wrap">
+    <div class="gallery-strip" id="gallery-strip">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1550.jpg"        alt="Baked goods" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1546.jpg"        alt="Fresh pastries" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1157.jpg"        alt="Soul food" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1548.jpg"        alt="Desserts" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1521.jpg"        alt="Cakes" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2025/01/IMG_0977-scaled.jpeg" alt="Fresh baked" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1534.jpg"        alt="Cookies and pastries" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1538.jpg"        alt="Sweet treats" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1541.jpg"        alt="Kitchen fresh" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1543.jpg"        alt="Homemade pastries" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1544.jpg"        alt="Dessert spread" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1529.jpg"        alt="Catering food" loading="lazy">
+      <img class="gallery-item" src="https://sweetmommas.net/wp-content/uploads/2025/01/9.png"               alt="Special bake" loading="lazy">
+    </div>
   </div>
 </section>
 
@@ -991,7 +1027,31 @@ function handleSubmit() {
   }, 500);
 }
 
-// Scroll-triggered fade-ins
+// Gallery arrow scroll
+function scrollGallery(dir) {
+  const strip = document.getElementById('gallery-strip');
+  strip.scrollBy({ left: dir * 600, behavior: 'smooth' });
+}
+
+// Gallery drag-to-scroll
+(function() {
+  const strip = document.getElementById('gallery-strip');
+  let isDown = false, startX, scrollLeft;
+  strip.addEventListener('mousedown', e => {
+    isDown = true; strip.classList.add('active');
+    startX = e.pageX - strip.offsetLeft;
+    scrollLeft = strip.scrollLeft;
+  });
+  strip.addEventListener('mouseleave', () => { isDown = false; });
+  strip.addEventListener('mouseup',    () => { isDown = false; });
+  strip.addEventListener('mousemove',  e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - strip.offsetLeft;
+    strip.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+})();
+
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
