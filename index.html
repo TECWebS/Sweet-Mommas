@@ -575,7 +575,7 @@
     </div>
     <img
       class="mascot-img"
-      src="Icon.png"
+      src="icon.png"
       alt="Sweet Momma's baker mascot holding a cake"
     >
   </div>
@@ -614,51 +614,73 @@
   </div>
 
   <div class="menu-panel active" id="tab-pastry">
-    <div class="menu-grid">
-      <div class="menu-category">
-        <h3>Pies</h3>
-        <ul><li>Pumpkin</li><li>Peach</li><li>Sweet Potato</li></ul>
+    <!-- Two even columns, each containing stacked categories — no empty grid cells -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+
+      <!-- LEFT COLUMN -->
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);">
+        <div class="menu-category">
+          <h3>Pies</h3>
+          <ul><li>Pumpkin</li><li>Peach</li><li>Sweet Potato</li></ul>
+        </div>
+        <div class="menu-category">
+          <h3>Danish &amp; Pastries</h3>
+          <ul>
+            <li>Chocolate Filled Danish</li><li>Fruit Filled Danish</li>
+            <li>Cream Puffs</li><li>Cinnamon Buns</li>
+            <li>Fruit Tarts</li><li>Washington Apple Coffee Cake</li>
+            <li>Blueberry Sour Cream Coffee Cake</li>
+          </ul>
+        </div>
+        <div class="menu-category">
+          <h3>Puff Pastries</h3>
+          <ul><li>Strudel</li><li>Almond Strips</li><li>Chocolate Filled</li><li>Fruit Filled</li></ul>
+        </div>
+        <div class="menu-category">
+          <h3>Cookies</h3>
+          <ul>
+            <li>Chocolate Chip</li><li>Peanut Butter</li><li>Oatmeal</li>
+            <li>Sugar</li><li>Hungarian Nut Crescents</li>
+            <li>Butter</li><li>Meltaways</li>
+          </ul>
+        </div>
+        <div class="menu-category">
+          <h3>Muffins</h3>
+          <ul><li>Apple</li><li>Blueberry</li><li>Chocolate Chip</li><li>Zucchini</li></ul>
+        </div>
       </div>
-      <div class="menu-category">
-        <h3>Danish &amp; Pastries</h3>
-        <ul>
-          <li>Chocolate Filled Danish</li><li>Fruit Filled Danish</li>
-          <li>Cream Puffs</li><li>Cinnamon Buns</li>
-          <li>Fruit Tarts</li><li>Washington Apple Coffee Cake</li>
-          <li>Blueberry Sour Cream Coffee Cake</li>
-        </ul>
+
+      <!-- RIGHT COLUMN -->
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);">
+        <div class="menu-category">
+          <h3>Cheesecake</h3>
+          <ul>
+            <li>New York</li><li>Sweet Potato</li><li>Oreo</li>
+            <li>Red Velvet</li><li>Snickers</li>
+            <li>Apple Strudel</li><li>Reese's</li><li>Almond</li><li>Fruit Top</li>
+          </ul>
+        </div>
+        <div class="menu-category">
+          <h3>Brownies</h3>
+          <ul>
+            <li>Plain Brownies</li><li>Cream Cheese Brownies</li>
+            <li>Vanilla Buttercream</li><li>Walnut Brownies</li>
+          </ul>
+        </div>
+        <div class="menu-category">
+          <h3>Desserts</h3>
+          <ul><li>Apple Crisp</li><li>Peach Crisp</li><li>Banana Pudding</li></ul>
+        </div>
+        <div class="menu-category" style="background:var(--pink-pale);flex:1;">
+          <h3>Daily Specials</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.75;">Our selection changes every day based on what Chef Jean bakes fresh. Stop in or follow us on social media to see today's specials!</p>
+          <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.6rem;">
+            <a href="https://www.facebook.com/Sweet-Mommas-108423437592355" target="_blank" rel="noopener" style="font-size:0.85rem;color:var(--red);text-decoration:none;font-weight:500;">→ Check Facebook for today's menu</a>
+            <a href="https://www.instagram.com/sweet_mommas/" target="_blank" rel="noopener" style="font-size:0.85rem;color:var(--red);text-decoration:none;font-weight:500;">→ Follow us on Instagram</a>
+          </div>
+        </div>
       </div>
-      <div class="menu-category">
-        <h3>Cookies</h3>
-        <ul>
-          <li>Chocolate Chip</li><li>Peanut Butter</li><li>Oatmeal</li>
-          <li>Sugar</li><li>Hungarian Nut Crescents</li>
-          <li>Butter</li><li>Meltaways</li>
-        </ul>
-      </div>
-      <div class="menu-category">
-        <h3>Cheesecake</h3>
-        <ul>
-          <li>New York</li><li>Sweet Potato</li><li>Oreo</li>
-          <li>Red Velvet</li><li>Snickers</li>
-          <li>Apple Strudel</li><li>Reese's</li><li>Almond</li><li>Fruit Top</li>
-        </ul>
-      </div>
-      <div class="menu-category">
-        <h3>Brownies</h3>
-        <ul>
-          <li>Plain Brownies</li><li>Cream Cheese Brownies</li>
-          <li>Vanilla Buttercream</li><li>Walnut Brownies</li>
-        </ul>
-        <h3 style="margin-top:1.1rem;">Muffins</h3>
-        <ul><li>Apple</li><li>Blueberry</li><li>Chocolate Chip</li><li>Zucchini</li></ul>
-      </div>
-      <div class="menu-category">
-        <h3>Desserts</h3>
-        <ul><li>Apple Crisp</li><li>Peach Crisp</li><li>Banana Pudding</li></ul>
-        <h3 style="margin-top:1.1rem;">Puff Pastries</h3>
-        <ul><li>Strudel</li><li>Almond Strips</li><li>Chocolate Filled</li><li>Fruit Filled</li></ul>
-      </div>
+
     </div>
   </div>
 
@@ -773,6 +795,7 @@
       <input type="date" id="date">
       <label for="details">Order Details / Notes</label>
       <textarea id="details" placeholder="Tell Chef Jean what you'd like — flavors, quantities, dietary needs, event info..."></textarea>
+      <p style="font-size:0.78rem;color:var(--text-muted);margin-top:1rem;">By submitting, your email app will open with your order details pre-filled — just hit Send!</p>
       <button class="submit-btn" onclick="handleSubmit()">Send My Order Request →</button>
     </div>
     <div class="order-info">
@@ -904,7 +927,7 @@
 </footer>
 
 <!-- TOAST -->
-<div class="toast" id="toast" role="status">✓ Order request received! Chef Jean will be in touch soon.</div>
+<div class="toast" id="toast" role="status">✓ Your email app should have opened — just hit Send to reach Chef Jean!</div>
 
 <script>
 function switchTab(e, id) {
@@ -915,18 +938,43 @@ function switchTab(e, id) {
 }
 
 function handleSubmit() {
-  const name = document.getElementById('fname').value.trim();
-  const phone = document.getElementById('phone').value.trim();
+  // ── UPDATE THIS EMAIL to Sweet Momma's actual address ──
+  const BUSINESS_EMAIL = 'orders@sweetmommas.net';
+
+  const fname     = document.getElementById('fname').value.trim();
+  const lname     = document.getElementById('lname').value.trim();
+  const phone     = document.getElementById('phone').value.trim();
+  const email     = document.getElementById('email').value.trim();
   const orderType = document.getElementById('order-type').value;
-  if (!name || !phone || !orderType) {
+  const date      = document.getElementById('date').value;
+  const details   = document.getElementById('details').value.trim();
+
+  if (!fname || !phone || !orderType) {
     alert('Please fill in your name, phone number, and order type so Chef Jean can reach you!');
     return;
   }
-  const toast = document.getElementById('toast');
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 4000);
-  document.querySelectorAll('.order-form-area input, .order-form-area select, .order-form-area textarea')
-    .forEach(el => el.value = '');
+
+  const subject = encodeURIComponent('Sweet Momma\'s Order Request — ' + orderType);
+  const body = encodeURIComponent(
+    'Hi Chef Jean,\n\n' +
+    'I\'d like to place an order. Here are my details:\n\n' +
+    'Name: ' + fname + ' ' + lname + '\n' +
+    'Phone: ' + phone + '\n' +
+    (email ? 'Email: ' + email + '\n' : '') +
+    'Order Type: ' + orderType + '\n' +
+    (date ? 'Requested Date: ' + date + '\n' : '') +
+    (details ? '\nOrder Details:\n' + details + '\n' : '') +
+    '\nThank you!'
+  );
+
+  window.location.href = 'mailto:' + BUSINESS_EMAIL + '?subject=' + subject + '&body=' + body;
+
+  // Show confirmation toast after brief delay
+  setTimeout(() => {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 5000);
+  }, 500);
 }
 
 // Scroll-triggered fade-ins
