@@ -383,11 +383,22 @@
     align-items: center;
   }
   .catering-img {
-    aspect-ratio: 1;
-    background: url('https://sweetmommas.net/wp-content/uploads/2020/12/plate-of-food.png') center/cover;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
     border-radius: 8px;
-    border: 6px solid var(--blush);
+    overflow: hidden;
+    aspect-ratio: 1;
     box-shadow: 0 4px 24px rgba(192,57,43,0.08);
+  }
+  .catering-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .catering-img img:first-child {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
   }
   .catering-list { list-style: none; margin: 1.25rem 0 2rem; }
   .catering-list li {
@@ -675,7 +686,8 @@
           <h3>Daily Specials</h3>
           <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.75;">Our selection changes every day based on what Chef Jean bakes fresh. Stop in or follow us on social media to see today's specials!</p>
           <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.6rem;">
-            <a href="https://www.facebook.com/Sweet-Mommas-108423437592355" target="_blank" rel="noopener" style="font-size:0.85rem;color:var(--red);text-decoration:none;font-weight:500;">→ Check Facebook for today's menu</a
+            <a href="https://www.facebook.com/Sweet-Mommas-108423437592355" target="_blank" rel="noopener" style="font-size:0.85rem;color:var(--red);text-decoration:none;font-weight:500;">→ Check Facebook for today's menu</a>
+            <a href="https://www.instagram.com/sweet_mommas/" target="_blank" rel="noopener" style="font-size:0.85rem;color:var(--red);text-decoration:none;font-weight:500;">→ Follow us on Instagram</a>
           </div>
         </div>
       </div>
@@ -836,7 +848,11 @@
 
 <!-- CATERING HIGHLIGHT -->
 <section class="catering-section" id="catering">
-  <div class="catering-img"></div>
+  <div class="catering-img">
+    <img src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1521.jpg" alt="Sweet Momma's soul food catering spread">
+    <img src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1548.jpg" alt="Baked goods by Sweet Momma's">
+    <img src="https://sweetmommas.net/wp-content/uploads/2020/12/IMG_1541.jpg" alt="Fresh food from Sweet Momma's kitchen">
+  </div>
   <div>
     <div class="section-label">Events &amp; Catering</div>
     <h2 class="section-title">Let Sweet Momma's Feed Your Crowd</h2>
